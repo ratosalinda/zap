@@ -14,8 +14,7 @@ client.on('qr', (qr) => {
 // });
 
 client.on('ready', () => {
-  console.log('Client is ready!');
-});
+  console.log('Client is ready!');es
 
 client.initialize();
 
@@ -56,14 +55,13 @@ async function fazerRequisicao() {
 
   } catch (error) {
 
-      console.error('Erro na requisição:', error.message);
-
       client.on('message', async (message) => {
           if (message.body === '!escala') {
               await client.sendMessage(message.from, 'Ocorreu um problema ao realizar a operação!');
           }
       });
 
+      console.error('Erro na requisição:', error.message);
   }
 }
 
