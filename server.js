@@ -7,10 +7,6 @@ const PORT = process.env.PORT || 3030;
 
 // your code
 
-app.listen(PORT, () => {
-  console.log(`server started on port ${PORT}`);
-});
-
 const { Client } = require('whatsapp-web.js');
 const client = new Client();
 
@@ -60,6 +56,10 @@ async function fazerRequisicao() {
     await client.sendMessage(message.from, 'Ocorreu um problema ao realizar a operação!');
   }
 }
+
+client.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
+});
 
 // Chame a função para fazer a requisição
 //fazerRequisicao();
