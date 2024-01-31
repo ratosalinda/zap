@@ -6,7 +6,7 @@ const { Client } = require('whatsapp-web.js');
 const client = new Client();
 
 client.on('qr', (qr) => {
-  console.log('QR RECEIVED', qr);
+  console.log('QR Recebido', qr);
 });
 
 // client.on('qr', (qr) => {
