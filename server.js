@@ -3,9 +3,13 @@ const qrcode = require('qrcode-terminal');
 // Info In order for your app to run properly you need to configure it so that it listens on port 3000. It is required for internal port mapping. The URL that your app is available at, will be provided to you after successful publish.
 // package.json file is required. Creating...
 
-const PORT = process.env.PORT || 3030;
+// const PORT = process.env.PORT || 3030;
 
-// your code
+// // your code
+
+// app.listen(PORT, () => {
+//   console.log(`server started on port ${PORT}`);
+// });
 
 const { Client } = require('whatsapp-web.js');
 const client = new Client();
@@ -56,10 +60,6 @@ async function fazerRequisicao() {
     await client.sendMessage(message.from, 'Ocorreu um problema ao realizar a operação!');
   }
 }
-
-client.listen(PORT, () => {
-  console.log(`server started on port ${PORT}`);
-});
 
 // Chame a função para fazer a requisição
 //fazerRequisicao();
