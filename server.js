@@ -44,16 +44,27 @@ if (message.body === '!escala') {
 const axios = require('axios');
 
 async function fazerRequisicao() {
-try {
-  const response = await axios.get('http://apibank.veredastecnologia/main/get_teste');
-  console.log('Sucesso na requisição', response.data);
+  try {
+      const response = await axios.get('http://apibank.veredastecnologia/main/get_teste');
+      console.log('Sucesso na requisição', response.data);
 
-  await client.sendMessage(message.from, response.data);
-} catch (error) {
-  
-  console.error('Erro na requisição:', error.message);
-  await client.sendMessage(message.from, 'Ocorreu um problema ao realizar a operação!');
-}
+      client.on('message', async (message) => {
+          if (message.body === '!escala') {
+              await client.sendMessage(message.from, response.data);
+          }
+      });
+
+  } catch (error) {
+
+      console.error('Erro na requisição:', error.message);
+
+      client.on('message', async (message) => {
+          if (message.body === '!escala') {
+              await client.sendMessage(message.from, 'Ocorreu um problema ao realizar a operação!');
+          }
+      });
+
+  }
 }
 
 // Chame a função para fazer a requisição
