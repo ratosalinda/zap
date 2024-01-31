@@ -1,5 +1,7 @@
 const qrcode = require('qrcode-terminal');
 
+console.log('caiu');
+
 // Info In order for your app to run properly you need to configure it so that it listens on port 3000. It is required for internal port mapping. The URL that your app is available at, will be provided to you after successful publish.
 // package.json file is required. Creating...
 
