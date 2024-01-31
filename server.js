@@ -14,54 +14,56 @@ client.on('qr', (qr) => {
 // });
 
 client.on('ready', () => {
-  console.log('Client is ready!');es
+  console.log('Client is ready!');
+});
 
 client.initialize();
 
 client.on('message', (message) => {
-console.log(message.body);
+  console.log(message.body);
 });
 
 //Seleciona a mensagem pra responder
 client.on('message', async (message) => {
-if (message.body === '!ping') {
-  await message.reply('pong');
-}
+  if (message.body === '!ping') {
+    await message.reply('pong');
+  }
 
   if (message.body === '!consulta') {
-  await fazerRequisicao();
-}
+    await fazerRequisicao();
+  }
 });
 
 //Não seleciona a mensagem pra responder
 client.on('message', async (message) => {
-if (message.body === '!escala') {
-  await client.sendMessage(message.from, 'Falha no carregamento!');
-}
+  if (message.body === '!escala') {
+    await client.sendMessage(message.from, 'Falha no carregamento!');
+  }
 });
 
 const axios = require('axios');
 
 async function fazerRequisicao() {
   try {
-      const response = await axios.get('http://apibank.veredastecnologia/main/get_teste');
-      console.log('Sucesso na requisição', response.data);
+    const response = await axios.get('http://apibank.veredastecnologia/main/get_teste');
+    console.log('Sucesso na requisição', response.data);
 
-      client.on('message', async (message) => {
-          if (message.body === '!escala') {
-              await client.sendMessage(message.from, response.data);
-          }
-      });
+    client.on('message', async (message) => {
+      if (message.body === '!escala') {
+        await client.sendMessage(message.from, response.data);
+      }
+    });
 
   } catch (error) {
 
-      client.on('message', async (message) => {
-          if (message.body === '!escala') {
-              await client.sendMessage(message.from, 'Ocorreu um problema ao realizar a operação!');
-          }
-      });
+    client.on('message', async (message) => {
+      if (message.body === '!escala') {
+        await client.sendMessage(message.from, 'Ocorreu um problema ao realizar a operação!');
+      }
+    });
 
-      console.error('Erro na requisição:', error.message);
+    console.error('Erro na requisição:', error.message);
+
   }
 }
 
