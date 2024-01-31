@@ -1,0 +1,11 @@
+{
+  "projectName": "zap",
+  "meta": {
+    "type": "backend"
+  },
+  "backend": {
+    "platform": "node17"
+  },
+  "hash": "4c71b2e1",
+  "domain": "newtreino.mdbgo.io"
+}
