@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3030;
 const { Client } = require('whatsapp-web.js');
 const client = new Client();
 
+contador();
+
 client.on('qr', (qr) => {
   console.log('QR Recebido', qr);
 });
@@ -46,25 +48,34 @@ const axios = require('axios');
 async function fazerRequisicao() {
   try {
     const response = await axios.get('http://apibank.veredastecnologia/main/get_teste');
-    console.log('Sucesso na requisição', response.data);
 
     client.on('message', async (message) => {
-      if (message.body === '!escala') {
         await client.sendMessage(message.from, response.data);
-      }
     });
+
+    console.log('Sucesso na requisição', response.data);
 
   } catch (error) {
 
     client.on('message', async (message) => {
-      if (message.body === '!escala') {
         await client.sendMessage(message.from, 'Ocorreu um problema ao realizar a operação!');
-      }
     });
 
     console.error('Erro na requisição:', error.message);
 
   }
+}
+
+async function contador() {
+
+  setTimeout(() => {
+    
+    console.log("Função contador...");
+
+    contador();
+
+  }, 3000);
+
 }
 
 // Chame a função para fazer a requisição
