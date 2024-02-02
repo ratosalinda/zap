@@ -20,8 +20,12 @@ const client = new Client({
 // const client = new Client();
 
 client.on('qr', (qr) => {
-  Qrcode.generate(qr, { small: true });
+  console.log('QR Recebido', qr);
 });
+
+// client.on('qr', (qr) => {
+//   Qrcode.generate(qr, { small: true });
+// });
 
 client.on('authenticated', () => {
   console.log('QrCode já autenticado!');
