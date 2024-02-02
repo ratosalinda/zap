@@ -54,7 +54,7 @@ client.on('message', async (message) => {
 
   if (message.body === '!escala') {
     try {
-      const response = await Axios.get('http://meufinanceiro/API/get_escala');
+      const response = await Axios.get('https://newfinanceiro.mdbgo.io/API/get_escala');
       await client.sendMessage(message.from, response.data.data);
       console.log('Resposta:', response.data.data);
     } catch (error) {
