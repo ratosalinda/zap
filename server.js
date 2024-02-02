@@ -1,8 +1,9 @@
-const { Axios, Express, PORT, LocalAuth } = require('./index');
+const { Client, Axios, LocalAuth } = require('./index');
 
 //const axios = require('axios');
-//const express = require("express");
-//const PORT = process.env.PORT || 3030;
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 3030;
 
 console.log('Iniciou');
 
@@ -66,6 +67,6 @@ client.on('message', async (message) => {
   }
 });
 
-Express.listen(PORT, () => {
-  console.log(`server started on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Servidor executando na porta ${PORT}`);
 });

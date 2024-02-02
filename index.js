@@ -9,8 +9,6 @@ module.exports = {
 
     // Structures
     Axios: require('axios'),
-    Express: require("express"),
-    PORT: process.env.PORT || 3030,
     Qrcode: require('qrcode-terminal'),
     Chat: require('./src/structures/Chat'),
     PrivateChat: require('./src/structures/PrivateChat'),
