@@ -14,6 +14,9 @@ const client = new Client({
   // args: ['--proxy-server=proxy-server-that-requires-authentication.example.com'],
   //headless: false
   //}
+  puppeteer: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  }
 });
 
 // const { Client } = require('whatsapp-web.js');
