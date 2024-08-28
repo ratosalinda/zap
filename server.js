@@ -10,9 +10,9 @@ console.log('Iniciou');
 const client = new Client({
   authStrategy: new LocalAuth(),
   // proxyAuthentication: { username: 'username', password: 'password' },
-  puppeteer: {
-    args: ['--proxy-server=proxy-server-that-requires-authentication.example.com'],
-    headless: false
+  puppeteer: { 
+  args: ['--proxy-server=proxy-server-that-requires-authentication.example.com'],
+  headless: false
   }
   // puppeteer: {
   //   args: ['--no-sandbox', '--disable-setuid-sandbox']
