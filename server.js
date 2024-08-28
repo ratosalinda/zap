@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3030;
 console.log('Iniciou');
 
 const client = new Client({
-  //authStrategy: new LocalAuth(),
+  authStrategy: new LocalAuth(),
   // proxyAuthentication: { username: 'username', password: 'password' },
   //puppeteer: { 
   // args: ['--proxy-server=proxy-server-that-requires-authentication.example.com'],
@@ -22,13 +22,13 @@ const client = new Client({
 // const { Client } = require('whatsapp-web.js');
 // const client = new Client();
 
-// client.on('qr', (qr) => {
-//   console.log('QR Recebido', qr);
-// });
-
 client.on('qr', (qr) => {
-  Qrcode.generate(qr, { small: true });
+  console.log('QR Recebido', qr);
 });
+
+// client.on('qr', (qr) => {
+//   Qrcode.generate(qr, { small: true });
+// });
 
 client.on('authenticated', () => {
   console.log('QrCode já autenticado!');
@@ -46,7 +46,8 @@ client.on('ready', () => {
 client.initialize();
 
 client.on('message', (message) => {
-  console.log(message.body);
+  //console.log(message.body);
+  console.log(message.from + ': ' + message.body);
 });
 
 //Seleciona a mensagem pra responder
