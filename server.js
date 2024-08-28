@@ -7,17 +7,13 @@ const PORT = process.env.PORT || 3030;
 
 console.log('Iniciou');
 
-const wwebVersion = '2.2407.3';
-
 const client = new Client({
-  authStrategy: new LocalAuth(), // your authstrategy here
-  puppeteer: {
-    headless: true , args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  },
-  webVersionCache: {
-      type: 'remote',
-      remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/${wwebVersion}.html`,
-  },
+  authStrategy: new LocalAuth(),
+  // proxyAuthentication: { username: 'username', password: 'password' },
+  //puppeteer: { 
+  // args: ['--proxy-server=proxy-server-that-requires-authentication.example.com'],
+  //headless: false
+  //}
 });
 
 // const { Client } = require('whatsapp-web.js');
@@ -47,8 +43,7 @@ client.on('ready', () => {
 client.initialize();
 
 client.on('message', (message) => {
-  //console.log(message.body);
-  console.log(message.from + ': ' + message.body);
+  console.log(message.body);
 });
 
 //Seleciona a mensagem pra responder
@@ -76,6 +71,6 @@ client.on('message', async (message) => {
   }
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Servidor executando na porta ${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Servidor executando na porta ${PORT}`);
+});
